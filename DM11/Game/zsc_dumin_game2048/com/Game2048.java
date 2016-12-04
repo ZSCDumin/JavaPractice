@@ -56,7 +56,7 @@ public class Game2048 extends JFrame {
 		setResizable(false); // 禁止调整窗体大小
 		getContentPane().setLayout(null); // 设置空布局
 		setBounds(500, 50, 500, 615);
-		setTitle("2048Java版"); // 设置窗体标题
+		setTitle("DM11_2048小游戏"); // 设置窗体标题
 
 		scoresPane = new JPanel(); // 创建分数显示面板
 		scoresPane.setBackground(Color.green); // 设置分数显示面板的背景色

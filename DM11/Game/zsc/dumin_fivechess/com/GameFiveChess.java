@@ -1,6 +1,15 @@
 package zsc.dumin_fivechess.com;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.EventQueue;
+import java.awt.TextField;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
@@ -10,11 +19,22 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.WindowConstants;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,22 +44,22 @@ import javax.swing.table.DefaultTableModel;
  */
 public class GameFiveChess extends JFrame {
 
-	private javax.swing.JTextArea chatArea;
-	private javax.swing.JTextField chatTextField;
-	private zsc.dumin_fivechess.com.ChessPanel chessPanel1;
-	private javax.swing.JLabel jLabel1;
-	private javax.swing.JPanel jPanel1;
-	private javax.swing.JPanel jPanel2;
-	private javax.swing.JPanel jPanel3;
-	private javax.swing.JPanel jPanel4;
-	private javax.swing.JPanel jPanel5;
-	private javax.swing.JScrollPane jScrollPane1;
-	private javax.swing.JScrollPane jScrollPane2;
-	private javax.swing.JScrollPane jScrollPane3;
-	private zsc.dumin_fivechess.com.LoginPanel loginPanel1;
-	private javax.swing.JButton sendButton;
-	protected javax.swing.JTable userInfoTable;
-	private javax.swing.JTextArea userInfoTextArea;
+	private JTextArea chatArea;
+	private JTextField chatTextField;
+	private ChessPanel chessPanel1;
+	private JLabel jLabel1;
+	private JPanel jPanel1;
+	private JPanel jPanel2;
+	private JPanel jPanel3;
+	private JPanel jPanel4;
+	private JPanel jPanel5;
+	private JScrollPane jScrollPane1;
+	private JScrollPane jScrollPane2;
+	private JScrollPane jScrollPane3;
+	private LoginPanel loginPanel1;
+	private JButton sendButton;
+	protected JTable userInfoTable;
+	private JTextArea userInfoTextArea;
 	private Socket socket;
 	private ObjectOutputStream objout;
 	private UserBean towardsUser;// 对家
@@ -158,40 +178,39 @@ public class GameFiveChess extends JFrame {
 	 * 初始化主窗体界面的方法
 	 */
 	private void initComponents() {
-		loginPanel1 = new zsc.dumin_fivechess.com.LoginPanel();
-		chessPanel1 = new zsc.dumin_fivechess.com.ChessPanel();
-		jPanel1 = new javax.swing.JPanel();
-		jPanel3 = new javax.swing.JPanel();
-		jLabel1 = new javax.swing.JLabel();
+		loginPanel1 = new LoginPanel();
+		chessPanel1 = new ChessPanel();
+		jPanel1 = new JPanel();
+		jPanel3 = new JPanel();
+		jLabel1 = new JLabel();
 		jLabel1.setOpaque(true);
 		jLabel1.setBackground(Color.WHITE);
-		jScrollPane2 = new javax.swing.JScrollPane();
-		userInfoTextArea = new javax.swing.JTextArea();
-		jPanel4 = new javax.swing.JPanel();
-		jScrollPane1 = new javax.swing.JScrollPane();
-		userInfoTable = new javax.swing.JTable();
-		jPanel2 = new javax.swing.JPanel();
-		jPanel5 = new javax.swing.JPanel();
-		chatTextField = new javax.swing.JTextField();
-		sendButton = new javax.swing.JButton();
-		jScrollPane3 = new javax.swing.JScrollPane();
-		chatArea = new javax.swing.JTextArea();
+		jScrollPane2 = new JScrollPane();
+		userInfoTextArea = new JTextArea();
+		jPanel4 = new JPanel();
+		jScrollPane1 = new JScrollPane();
+		userInfoTable = new JTable();
+		jPanel2 = new JPanel();
+		jPanel5 = new JPanel();
+		chatTextField = new JTextField();
+		sendButton = new JButton();
+		jScrollPane3 = new JScrollPane();
+		chatArea = new JTextArea();
 
-		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-		setTitle("小小五子棋");
-		getContentPane().add(chessPanel1, java.awt.BorderLayout.CENTER);
+		setTitle("DM11五子棋");
+		getContentPane().add(chessPanel1, BorderLayout.CENTER);
 
-		jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1,
-				javax.swing.BoxLayout.PAGE_AXIS));
+		jPanel1.setLayout(new BoxLayout(jPanel1,
+				BoxLayout.PAGE_AXIS));
 
-		jPanel3.setBorder(javax.swing.BorderFactory
-				.createLineBorder(new java.awt.Color(0, 0, 0)));
-		jPanel3.setPreferredSize(new java.awt.Dimension(225, 50));
-		jPanel3.setLayout(new java.awt.BorderLayout());
+		jPanel3.setBorder(BorderFactory
+				.createLineBorder(new Color(0, 0, 0)));
+		jPanel3.setPreferredSize(new Dimension(225, 50));
+		jPanel3.setLayout(new BorderLayout());
 
-		jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource(
+		jLabel1.setIcon(new ImageIcon(getClass().getResource(
 				"/res/infoPanelLeft.png"))); // NOI18N
-		jPanel3.add(jLabel1, java.awt.BorderLayout.WEST);
+		jPanel3.add(jLabel1, BorderLayout.WEST);
 
 		userInfoTextArea.setColumns(20);
 		userInfoTextArea.setEditable(false);
@@ -199,19 +218,19 @@ public class GameFiveChess extends JFrame {
 		userInfoTextArea.setRows(5);
 		jScrollPane2.setViewportView(userInfoTextArea);
 
-		jPanel3.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+		jPanel3.add(jScrollPane2, BorderLayout.CENTER);
 
 		jPanel1.add(jPanel3);
 
-		jPanel4.setBorder(javax.swing.BorderFactory
-				.createLineBorder(new java.awt.Color(0, 0, 0)));
-		jPanel4.setPreferredSize(new java.awt.Dimension(100, 20));
-		jPanel4.setLayout(new java.awt.BorderLayout());
+		jPanel4.setBorder(BorderFactory
+				.createLineBorder(new Color(0, 0, 0)));
+		jPanel4.setPreferredSize(new Dimension(100, 20));
+		jPanel4.setLayout(new BorderLayout());
 
-		jScrollPane1.setMaximumSize(new java.awt.Dimension(32767, 30));
-		jScrollPane1.setPreferredSize(new java.awt.Dimension(241, 30));
+		jScrollPane1.setMaximumSize(new Dimension(32767, 30));
+		jScrollPane1.setPreferredSize(new Dimension(241, 30));
 
-		userInfoTable.setModel(new javax.swing.table.DefaultTableModel(
+		userInfoTable.setModel(new DefaultTableModel(
 				new Object[][] {
 
 				}, new String[] { "昵称", "主机", "联机时间" }) {
@@ -221,37 +240,37 @@ public class GameFiveChess extends JFrame {
 				return canEdit[columnIndex];
 			}
 		});
-		userInfoTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+		userInfoTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		jScrollPane1.setViewportView(userInfoTable);
 
-		jPanel4.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+		jPanel4.add(jScrollPane1, BorderLayout.CENTER);
 
 		jPanel1.add(jPanel4);
 
-		jPanel2.setBorder(javax.swing.BorderFactory
-				.createLineBorder(new java.awt.Color(0, 0, 0)));
-		jPanel2.setPreferredSize(new java.awt.Dimension(100, 300));
-		jPanel2.setLayout(new java.awt.BorderLayout());
+		jPanel2.setBorder(BorderFactory
+				.createLineBorder(new Color(0, 0, 0)));
+		jPanel2.setPreferredSize(new Dimension(100, 300));
+		jPanel2.setLayout(new BorderLayout());
 
-		jPanel5.setLayout(new javax.swing.BoxLayout(jPanel5,
-				javax.swing.BoxLayout.LINE_AXIS));
+		jPanel5.setLayout(new BoxLayout(jPanel5,
+				BoxLayout.LINE_AXIS));
 
-		chatTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-			public void keyPressed(java.awt.event.KeyEvent evt) {
+		chatTextField.addKeyListener(new KeyAdapter() {
+			public void keyPressed(KeyEvent evt) {
 				chatTextFieldKeyPressed(evt);
 			}
 		});
 		jPanel5.add(chatTextField);
 
 		sendButton.setText("发送");
-		sendButton.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
+		sendButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
 				sendButtonActionPerformed(evt);
 			}
 		});
 		jPanel5.add(sendButton);
 
-		jPanel2.add(jPanel5, java.awt.BorderLayout.PAGE_END);
+		jPanel2.add(jPanel5, BorderLayout.PAGE_END);
 
 		chatArea.setColumns(20);
 		chatArea.setEditable(false);
@@ -259,13 +278,13 @@ public class GameFiveChess extends JFrame {
 		chatArea.setTabSize(4);
 		jScrollPane3.setViewportView(chatArea);
 
-		jPanel2.add(jScrollPane3, java.awt.BorderLayout.CENTER);
+		jPanel2.add(jScrollPane3, BorderLayout.CENTER);
 
 		jPanel1.add(jPanel2);
 
-		getContentPane().add(jPanel1, java.awt.BorderLayout.EAST);
+		getContentPane().add(jPanel1, BorderLayout.EAST);
 
-		java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
+		Dimension screenSize = Toolkit.getDefaultToolkit()
 				.getScreenSize();
 		setBounds((screenSize.width - 1000) / 2, (screenSize.height - 700) / 2,
 				1000, 700);
@@ -277,7 +296,7 @@ public class GameFiveChess extends JFrame {
 	 * @param evt
 	 *            - 事件对象
 	 */
-	private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {
+	private void sendButtonActionPerformed(ActionEvent evt) {
 		String message = (String) chatTextField.getText(); // 获取文本信息
 		if (message == null || message.isEmpty()) {
 			return;
@@ -287,7 +306,7 @@ public class GameFiveChess extends JFrame {
 		send(message); // 发送信息
 	}
 
-	private void chatTextFieldKeyPressed(java.awt.event.KeyEvent evt) {
+	private void chatTextFieldKeyPressed(KeyEvent evt) {
 		if (evt.getKeyChar() == '\n') {
 			sendButton.doClick();
 		}
@@ -339,8 +358,8 @@ public class GameFiveChess extends JFrame {
 	 * @param args
 	 *            the command line arguments
 	 */
-	public static void main(String args[]) {
-		java.awt.EventQueue.invokeLater(new Runnable() {
+	public static void runGame() {
+		EventQueue.invokeLater(new Runnable() {
 			@Override
 			public void run() {
 				try {

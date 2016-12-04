@@ -18,7 +18,7 @@ class MathCal {
 		return 1.0 / num;
 	}
     //½×³Ë
-	public static BigInteger jieCheng(double num) {
+	public static BigInteger jieCheng(int num) {
 		BigInteger bigInteger = BigInteger.ONE;
 		if (num == 0) {
 			return bigInteger = BigInteger.ZERO;
@@ -58,5 +58,10 @@ class MathCal {
 	public static double percent(double num)
 	{
 		return num/100;
+	}
+	//¼ÆËã½Ç¶È
+	public static double angle(double num)
+	{
+		return num / 180 * Math.PI;
 	}
 }

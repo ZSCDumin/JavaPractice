@@ -39,7 +39,7 @@ public class GameSnake extends JFrame {
 				}
 			}
 		});
-		this.setTitle("Snake Game 0.1   By £º xtutu");
+		this.setTitle("DM11Ì°Ê³Éß");
 		this.setVisible(true);
 		new Thread(new ThreadUpadte()).start();
 	}
